@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -31,6 +32,11 @@ public class UaaApplication {
 
 @Configuration
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    public void configure(final WebSecurity web) throws Exception {
+        web.debug(true);
+    }
 
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
